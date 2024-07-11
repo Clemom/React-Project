@@ -3,9 +3,8 @@ export default function WeatherInfos ({weather}){
         <div className="card-infos">
             <div className="card-name">
                 <h3>{weather?.location.name}</h3>
-            </div>
-            <div className="card-country">
-                <h4>{weather?.location.country}</h4>
+                <span>({weather?.location.country})</span>
+                
             </div>
             <div className="card-boxs">
                 <div className="card-icon">

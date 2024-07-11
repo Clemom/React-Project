@@ -13,15 +13,46 @@ body {
 }
 
 .container {
+    position: relative;
     width: 100%;
+    height: 900px;
     max-width: 500px;
     margin: 0 auto;
     display: grid;
     place-items: center;
-    gap: 1rem;
-    background: radial-gradient(#ffffff, #b4b4b4);
     border-radius: 15px;
-    box-shadow: -10px 10px 10px 0px rgb(0, 0, 0);
+    box-shadow: -5px 5px 10px 0px rgb(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./assets/sky.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px); /* Ajustez le niveau de flou selon vos besoins */
+    z-index: -1;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    margin-top: 25px;
+    font-size: 50px;
+}
+
+.card-infos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
 .container form {
@@ -29,7 +60,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .container form input {
@@ -45,7 +76,7 @@ body {
 }
 
 .container form button {
-    background: rgb(82, 82, 82);
+    background: rgb(88, 169, 240);
     color: #f1f1f1;
     padding: 1rem;
     cursor: pointer;
@@ -60,20 +91,37 @@ body {
 }
 
 .container form button:hover {
-    background: rgb(124, 148, 180);
+    background: rgb(90, 141, 245);
+}
+
+.card-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.4rem;
+    text-align: center;
 }
 
 .card-name h3 {
     text-transform: uppercase;
-    color: #28284d;
+    color: #ffffff;
     font-size: clamp(20px, 3vw, 50px);
     text-align: center;
-    
+    margin: 0;
+    padding: 0;
+}
+
+.card-name span {
+    color: #ffffff;
+    font-size: clamp(16px, 2.3vw, 50px);
+    margin: 0;
+    padding: 0;
 }
 
 .card-country h4{
 
-    color: rgb(51, 51, 90);
+    color: rgb(255, 255, 255);
     font-size: clamp(16px, 2vw, 25px);
     text-align: center;
 }
@@ -82,11 +130,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
     margin: 1rem auto;
     background: #fff;
     padding: 1rem;
     border-radius: 10px;
+    width: 85%
 }
 
 .card-icon {
@@ -97,13 +146,14 @@ body {
 }
 
 .card-icon img {
-    width: 100%;
+    width: 40%;
     margin: 0;
     padding: 0;
 }
 
 .card-icon p {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
 }
 
 .card-temp {
@@ -139,9 +189,10 @@ body {
     display: inline-block;
     position: relative;
     border: 3px solid;
-    border-color: #fff #fff transparent;
+    border-color: #000000 #000000 transparent;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+    margin-bottom: 10px;
 }
 
 .loader::after {
@@ -152,8 +203,8 @@ body {
     top: 0;
     bottom: 0;
     margin: auto;
-    border: 3px solid;
-    border-color: transparent crimson crimson;
+    border: 3px dotted;
+    border-color: transparent rgb(0, 0, 0) rgb(0, 0, 0);
     width: 24px;
     height: 24px;
     border-radius: 50%;

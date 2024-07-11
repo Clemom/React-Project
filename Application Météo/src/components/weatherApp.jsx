@@ -14,18 +14,14 @@ export default function WeatherApp (){
     useEffect(()=>{
         loadInfo();
     }, [])
-
-    // useEffect(()=>{
-
-    // })
-    
+  
     async function loadInfo(city='paris'){
         try{
             const request = await fetch(`${WEATHERAPI_URL}&key=${WEATHERAPI_KEY}&q=${city}`);
             const json = await request.json();
             setTimeout(()=> {
                 setWeather(json);
-            },2000)
+            },500)
             console.log(json);
 
         }catch(error){
@@ -40,7 +36,9 @@ export default function WeatherApp (){
 
     return (
         <>
+        
         <div className="container">
+        <h1>Dhéliat</h1>
             <WeatherForm onChangeCity={handleChange}/>
             {weather ? <WeatherInfos weather={weather}/> : <Loader />}
         </div>
