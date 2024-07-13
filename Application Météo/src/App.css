@@ -32,10 +32,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(./assets/sky.jpg);
+    background-image: url(./assets/icons/sky.jpg);
     background-size: cover;
     background-position: center;
-    filter: blur(30px); /* Ajustez le niveau de flou selon vos besoins */
+    filter: blur(30px);
     z-index: -1;
 }
 
@@ -132,7 +132,7 @@ h1 {
     align-items: center;
     gap: 2rem;
     margin: 1rem auto;
-    background: #fff;
+    background: #949494;
     padding: 1rem;
     border-radius: 10px;
     width: 85%

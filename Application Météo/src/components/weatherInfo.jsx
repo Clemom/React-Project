@@ -1,4 +1,13 @@
+import weatherIcons from '../components/weatherIcons.json';
+
 export default function WeatherInfos ({weather}){
+
+
+
+    const getIcon = (condition) => {
+        return weatherIcons[condition] || "./assets/icons/default-icon.svg";
+    };
+
     return (
         <div className="card-infos">
             <div className="card-name">
@@ -8,7 +17,7 @@ export default function WeatherInfos ({weather}){
             </div>
             <div className="card-boxs">
                 <div className="card-icon">
-                  <img src={`http:${weather?.current.condition.icon}`} alt={weather?.current.condition.text}/>
+                  <img src={getIcon(weather?.current.condition.text)} alt={weather?.current.condition.text}/>
                   <p>{weather?.current.condition.text}</p>
                 </div>
                 <div className="card-temp">
