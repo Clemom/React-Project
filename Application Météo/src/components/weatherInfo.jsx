@@ -18,9 +18,8 @@ export default function WeatherInfos ({weather}){
                   
                 </div>
                 <div className="card-temp">
-                    <h5>Temperature</h5>
                     <span>{weather?.current.temp_c}°c</span>
-                    <p>{weather?.current.condition.text}</p>
+                  {/* <p>{weather?.current.condition.text}</p>*/}
                 </div>
             </div>
         </div>

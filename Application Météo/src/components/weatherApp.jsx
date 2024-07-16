@@ -48,11 +48,15 @@ export default function WeatherApp() {
       <div className="container">
         <h1>Delia</h1>
         <div className="card-name">
-          <h3>{weather?.location.name}</h3>
-          <span>({weather?.location.country})</span>
-        </div>
-        <p>{newDate(new Date())}</p>
+          
+        
+        
         <WeatherForm onChangeCity={handleChange} />
+        <div className="location">
+        <h3>{weather?.location.name}</h3><span>({weather?.location.country})</span>
+        </div>
+          <p>{newDate(new Date())}</p>
+          </div>
         {weather ? (
           <>
             <WeatherInfos weather={weather} />
