@@ -1,6 +1,6 @@
 {
     "Sunny": "./src/assets/icons/Soleil.svg",
-    "Partly cloudy": "./src/assets/icons/Couvert,soleil,nuages.svg",
+    "Partly Cloudy": "./src/assets/icons/Couvert,soleil,nuages.svg",
     "Cloudy": "./src/assets/icons/Nuageux.svg",
     "Overcast": "./src/assets/icons/Nuageux.svg",
     "Mist": "./src/assets/icons/Venteux.svg",
