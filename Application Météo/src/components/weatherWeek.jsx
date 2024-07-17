@@ -15,10 +15,10 @@ export default function WeatherWeek ({city}){
   
     async function loadWeekInfo(city){
         try{
-            const request = await fetch(`${WEATHERWEEKAPI_URL}?key=${WEATHERWEEKAPI_KEY}&q=${city}&days=6`);
+            const request = await fetch(`${WEATHERWEEKAPI_URL}?key=${WEATHERWEEKAPI_KEY}&q=${city}&days=7`);
             const json = await request.json();
             setTimeout(()=> {
-                setWeatherWeek(json.forecast.forecastday);
+                setWeatherWeek(json.forecast.forecastday.slice(1));
             },500)
             console.log(json);
 
@@ -33,28 +33,36 @@ export default function WeatherWeek ({city}){
       };
 
       const getIcon = (condition) => {
-        return weatherIcons[condition] || "./assets/icons/default-icon.svg";
+        return weatherIcons[condition]?.icon || "./assets/icons/default-icon.svg";
     };
 
+    const getConditionInFrench = (condition) => {
+        return weatherIcons[condition]?.fr || condition;
+      };
+    
+
+    
+
     return (
-        <div className="weekWeather">
-            <h2>Prévisions de la semaine</h2>
+        
             <div className="weekPrevision">
             {weatherWeek ? (
                 weatherWeek.map(day => (
                     <div className="previsionDay" key={day.date}>
                         <h3>{formatDate(day.date)}</h3>
-                       {/*  <p>{day.day.condition.text}</p>*/}
+                        <div className="weekInfos">
+                        <p>{day.day.mintemp_c}°C</p>
+                        <p>{day.day.maxtemp_c}°C</p>
+                        </div>
                         <img src={getIcon(day?.day.condition.text)} alt={day?.day.condition.text} />
-                        <p>Max: {day.day.maxtemp_c}°C</p>
-                        <p>Min: {day.day.mintemp_c}°C</p>
+                        
+                        
                     </div>
                     
                 ))
             ) : (
                 <p>Chargement...</p>
             )}
-        </div>
         </div>
     );
 }

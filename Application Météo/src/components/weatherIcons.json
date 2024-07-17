@@ -1,25 +1,106 @@
 {
-    "Sunny": "./src/assets/icons/Soleil.svg",
-    "Partly Cloudy": "./src/assets/icons/Couvert,soleil,nuages.svg",
-    "Cloudy": "./src/assets/icons/Nuageux.svg",
-    "Overcast": "./src/assets/icons/Nuageux.svg",
-    "Mist": "./src/assets/icons/Venteux.svg",
-    "Patchy rain possible": "./src/assets/icons/Pluvieux.svg",
-    "Patchy snow possible": "./src/assets/icons/Neige.svg",
-    "Fog": "./src/assets/icons/Venteux.svg",
-    "Patchy light rain with thunder": "./src/assets/icons/Tempete.svg",
-    "Light snow showers": "./src/assets/icons/Neige.svg",
-    "Moderate or heavy sleet showers": "./src/assets/icons/Neige.svg",
-    "Light sleet showers": "./src/assets/icons/Neige.svg",
-    "Torrential rain shower": "./src/assets/icons/Pluie.svg",
-    "Moderate or heavy snow showers": "./src/assets/icons/Neige.svg",
-    "Moderate or heavy rain shower": "./src/assets/icons/Pluie.svg",
-    "Light rain shower": "./src/assets/icons/Pluvieux.svg",
-    "Ice pellets": "./src/assets/icons/Neige.svg",
-    "Heavy snow": "./src/assets/icons/Neige.svg",
-    "Patchy heavy snow": "./src/assets/icons/Neige.svg",
-    "Moderate snow": "./src/assets/icons/Neige.svg",
-    "Patchy moderate snow": "./src/assets/icons/Neige.svg",
-    "Clear": "./src/assets/icons/Nuit dégagé.svg"
-    
+    "Sunny": {
+        "icon": "./src/assets/icons/Soleil.svg",
+        "fr": "Ensoleillé"
+    },
+    "Partly Cloudy ": {
+        "icon": "./src/assets/icons/Couvert,soleil,nuages.svg",
+        "fr": "Partiellement nuageux"
+    },
+    "Partly Cloudy": {
+        "icon": "./src/assets/icons/Couvert,soleil,nuages.svg",
+        "fr": "Partiellement nuageux"
+    },
+    "Cloudy ": {
+        "icon": "./src/assets/icons/Nuageux.svg",
+        "fr": "Nuageux"
+    },
+    "Overcast": {
+        "icon": "./src/assets/icons/Nuageux.svg",
+        "fr": "Couvert"
+    },
+    "Mist": {
+        "icon": "./src/assets/icons/Venteux.svg",
+        "fr": "Brume"
+    },
+    "Patchy rain possible": {
+        "icon": "./src/assets/icons/Pluvieux.svg",
+        "fr": "Possibilité de pluie"
+    },
+    "Patchy rain nearby": {
+        "icon": "./src/assets/icons/Pluvieux.svg",
+        "fr": "Pluie éparse à proximité"
+    },
+    "Patchy snow possible": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Possibilité de neige"
+    },
+    "Fog": {
+        "icon": "./src/assets/icons/Venteux.svg",
+        "fr": "Brouillard"
+    },
+    "Patchy light rain with thunder": {
+        "icon": "./src/assets/icons/Tempete.svg",
+        "fr": "Pluie légère avec tonnerre"
+    },
+    "Light snow showers": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Averses de neige légères"
+    },
+    "Moderate or heavy sleet showers": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Averses de grésil modérées ou fortes"
+    },
+    "Light sleet showers": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Averses de grésil légères"
+    },
+    "Torrential rain shower": {
+        "icon": "./src/assets/icons/Pluie.svg",
+        "fr": "Averse de pluie torrentielle"
+    },
+    "Moderate or heavy snow showers": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Averses de neige modérées ou fortes"
+    },
+    "Moderate or heavy rain shower": {
+        "icon": "./src/assets/icons/Pluie.svg",
+        "fr": "Averses de pluie modérées ou fortes"
+    },
+    "Light rain shower": {
+        "icon": "./src/assets/icons/Pluvieux.svg",
+        "fr": "Averses de pluie légères"
+    },
+    "Ice pellets": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Grêlons"
+    },
+    "Heavy snow": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Forte neige"
+    },
+    "Patchy heavy snow": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Neige forte éparse"
+    },
+    "Moderate snow": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Neige modérée"
+    },
+    "Patchy moderate snow": {
+        "icon": "./src/assets/icons/Neige.svg",
+        "fr": "Neige modérée éparse"
+    },
+    "Clear": {
+        "icon": "./src/assets/icons/Nuit dégagé.svg",
+        "fr": "Dégagé"
+    },
+    "Moderate rain": {
+        "icon": "./src/assets/icons/Pluie.svg",
+        "fr": "Dégagé"
+    },
+    "Heavy rain": {
+        "icon": "./src/assets/icons/Pluie.svg",
+        "fr": "Grosse pluie"
+    }
 }
