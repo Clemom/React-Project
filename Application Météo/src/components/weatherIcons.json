@@ -12,12 +12,20 @@
         "fr": "Partiellement nuageux"
     },
     "Cloudy ": {
-        "icon": "./src/assets/icons/Nuageux.svg",
-        "fr": "Nuageux"
+        "icon": "./src/assets/icons/Couvert,soleil,nuages.svg",
+        "fr": "Partiellement nuageux"
+    },
+    "Cloudy": {
+        "icon": "./src/assets/icons/Couvert,soleil,nuages.svg",
+        "fr": "Partiellement nuageux"
     },
     "Overcast": {
         "icon": "./src/assets/icons/Nuageux.svg",
         "fr": "Couvert"
+    },
+    "Overcast ": {
+        "icon": "./src/assets/icons/Nuageux.svg",
+        "fr": "Nuageux"
     },
     "Mist": {
         "icon": "./src/assets/icons/Venteux.svg",
