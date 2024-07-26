@@ -37,7 +37,7 @@ body {
     margin: 0 auto;
     place-items: center;
     overflow: hidden;
-    border: 3px solid black;
+
     background-color: #edede9;
 }
 
@@ -48,7 +48,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(38, 50, 61);
+    background-color: #edede9;
     z-index: -1;
 }
 
@@ -89,7 +89,7 @@ h2 {
 
 .card-name h3 {
     text-transform: uppercase;
-    font-size: clamp(25px, 2vw, 30px);
+    font-size: clamp(20px, 2vw, 30px);
     font-family: 'Sweet Bread', sans-serif;
     color: rgb(61, 61, 61);
     text-align: center;
@@ -246,6 +246,21 @@ h2 {
     font-size: clamp(10px, 3vw, 15px);
 }
 
+.error-message {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 700;
+  }
+
+  .erreur-meteo {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    font-weight: 700;
+    color: red;
+  }
+ 
 
 .loader {
     width: 48px;

@@ -4,13 +4,14 @@ import WeatherInfos from "./weatherInfo";
 import WeatherWeek from "./weatherWeek";
 import Loader from "./loader";
 
-const WEATHERAPI_KEY = "f89087f9361545cb9b6155012240907";
-const WEATHERAPI_URL = "http://api.weatherapi.com/v1/current.json?aqi=no";
+const WEATHERAPI_KEY = "Z5MBV324R6CAVNQJRR6UV77L4";
+const WEATHERAPI_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
 export default function WeatherApp() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState('Bordeaux');
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadInfo(city);
@@ -24,18 +25,19 @@ export default function WeatherApp() {
     return () => clearInterval(timer);
   }, []);
 
-    async function loadInfo(city) {
+  async function loadInfo(city) {
+    setLoading(true);
     try {
-      const request = await fetch(
-        `${WEATHERAPI_URL}&key=${WEATHERAPI_KEY}&q=${city}`
-      );
+      const request = await fetch(`${WEATHERAPI_URL}${city}?unitGroup=metric&key=${WEATHERAPI_KEY}&include=days`);
+      if (!request.ok) {
+        throw new Error('Ville non trouvée');
+      }
       const json = await request.json();
-      setTimeout(() => {
-        setWeather(json);
-      }, 500);
-      console.log(json);
+      setWeather(json);
     } catch (error) {
       console.error("Erreur lors du chargement", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -52,7 +54,7 @@ export default function WeatherApp() {
   function handleChange(newCity) {
     setWeather(null);
     setCity(newCity);
-  }
+  };
 
   return (
     <>
@@ -60,21 +62,25 @@ export default function WeatherApp() {
         <h1>Delia</h1>
         
         <div className="card-name">       
-        <WeatherForm onChangeCity={handleChange} />
-        <div className="location">
-        <h3>{weather?.location.name}</h3>
-        </div>        
-        <p>{newDate(currentTime)}</p>
-          </div>
-          
-        {weather ? (
-          <>
-            <WeatherInfos weather={weather} />
-            <h2>Prévisions de la semaine</h2>
-            <WeatherWeek city={city} />
-          </>
-        ) : (
+          <WeatherForm onChangeCity={handleChange} />
+          <div className="location">
+          <h3>{weather?.resolvedAddress || "Ville inconnue"}</h3>
+          </div>        
+          <p>{newDate(currentTime)}</p>
+        </div>
+        
+        {loading ? (
           <Loader />
+        ) : (
+          weather ? (
+            <>
+              <WeatherInfos weather={weather} />
+              <h2>Prévisions de la semaine</h2>
+              <WeatherWeek city={city} />
+            </>
+          ) : (
+            <p>Les données météo ne sont pas disponibles.</p>
+          )
         )}
       </div>
     </>

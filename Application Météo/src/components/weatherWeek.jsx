@@ -1,68 +1,61 @@
 import { useState, useEffect } from "react";
 import weatherIcons from '../components/weatherIcons.json';
 
-const WEATHERWEEKAPI_KEY = "f89087f9361545cb9b6155012240907";
-const WEATHERWEEKAPI_URL = "http://api.weatherapi.com/v1/forecast.json";
+const WEATHERWEEKAPI_KEY = "Z5MBV324R6CAVNQJRR6UV77L4";
+const WEATHERWEEKAPI_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
+export default function WeatherWeek({ city }) {
+  const [weatherWeek, setWeatherWeek] = useState(null);
+  const [error, setError] = useState(null);
 
-export default function WeatherWeek ({city}){
+  useEffect(() => {
+    loadWeekInfo(city);
+  }, [city]);
 
-    const [weatherWeek, setWeatherWeek] = useState(null);
+  async function loadWeekInfo(city) {
+    try {
+      const request = await fetch(`${WEATHERWEEKAPI_URL}${city}?unitGroup=metric&key=${WEATHERWEEKAPI_KEY}&include=days`);
+      if (!request.ok) {
+        throw new Error('Les données météo ne sont pas disponibles.');
+      }
+      const json = await request.json();
+      setTimeout(() => {
+        setWeatherWeek(json.days.slice(2,8));
+      }, 500);
+      setError(null);
+    } catch (error) {
+      console.error('Erreur lors du chargement', error);
+      setError(error.message);
+    }
+  }
 
-    useEffect(()=>{
-        loadWeekInfo(city);
-    }, [city])
-  
-    async function loadWeekInfo(city){
-        try{
-            const request = await fetch(`${WEATHERWEEKAPI_URL}?key=${WEATHERWEEKAPI_KEY}&q=${city}&days=7`);
-            const json = await request.json();
-            setTimeout(()=> {
-                setWeatherWeek(json.forecast.forecastday.slice(1));
-            },500)
-            console.log(json);
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: '2-digit' };
+    return new Date(dateString).toLocaleDateString('fr-FR', options);
+  };
 
-        }catch(error){
-            console.error('Erreur lors du chargement', error)
-        }
-    };
+  const getIcon = (condition) => {
+    return weatherIcons[condition]?.icon || "./assets/icons/default-icon.svg";
+  };
 
-    const formatDate = (dateString) => {
-        const options = { day: '2-digit', month: '2-digit' };
-        return new Date(dateString).toLocaleDateString('fr-FR', options);
-      };
-
-      const getIcon = (condition) => {
-        return weatherIcons[condition]?.icon || "./assets/icons/default-icon.svg";
-    };
-
-    const getConditionInFrench = (condition) => {
-        return weatherIcons[condition]?.fr || condition;
-      };
-    
-
-    
-
-    return (
-        
-            <div className="weekPrevision">
-            {weatherWeek ? (
-                weatherWeek.map(day => (
-                    <div className="previsionDay" key={day.date}>
-                        <h3>{formatDate(day.date)}</h3>
-                        <div className="weekInfos">
-                        <p>{day.day.mintemp_c}°C</p>
-                        <p>{day.day.maxtemp_c}°C</p>
-                        </div>
-                        <img src={getIcon(day?.day.condition.text)} alt={day?.day.condition.text} />
-                        
-                        
-                    </div>
-                    
-                ))
-            ) : (
-                <p>Chargement...</p>
-            )}
-        </div>
-    );
+  return (
+    <div className="weekPrevision">
+      {error ? (
+        <p className="error-message">{error}</p>
+      ) : weatherWeek ? (
+        weatherWeek.map(day => (
+          <div className="previsionDay" key={day.datetime}>
+            <h3>{formatDate(day.datetime)}</h3>
+            <div className="weekInfos">
+              <p>{day.tempmin}°C</p>
+              <p>{day.tempmax}°C</p>
+            </div>
+            <img src={getIcon(day.conditions)} alt={day.conditions} />
+          </div>
+        ))
+      ) : (
+        <p>Chargement...</p>
+      )}
+    </div>
+  );
 }
