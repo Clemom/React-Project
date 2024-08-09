@@ -79,7 +79,7 @@ export default function WeatherApp() {
               <WeatherWeek city={city} />
             </>
           ) : (
-            <p>Les données météo ne sont pas disponibles.</p>
+            <p>Les données météorologique ne sont pas disponibles.</p>
           )
         )}
       </div>
